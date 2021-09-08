@@ -1,0 +1,52 @@
+[project]
+authors = [
+  {name = "Benoit Verret", email = "benoit.verret.4@ulaval.ca"},
+]
+dependencies = [
+    "httpx",
+    "click~=8.0",
+    "rich~=10.11",
+]
+
+description = "Python E2E Tester for A21 GLO-4002 Project"
+dynamic = ["version"]
+name = "glo4002-e2e-tester"
+readme = "README.md"
+requires-python = ">=3.9"
+version = {use_scm = true}
+
+[project.urls]
+repository = "https://github.com/KerberosMorphy/glo4002-e2e-tester"
+
+[project.scripts]
+run-dino-test = "glo4002_e2e_tester.tester:main"
+
+[tool.black]
+experimental-string-processing = true
+line-length = 110
+
+[tool.isort]
+line_length = 100
+profile = "black"
+src_paths = ["src"]
+
+
+[tool.pdm]
+[build-system]
+build-backend = "pdm.pep517.api"
+requires = ["pdm-pep517"]
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_errors = true
+ignore_missing_imports = true
+namespace_packages = true
+pretty = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_errors = false
+ignore_missing_imports = false
+module = "glo4002_e2e_tester.*"
